@@ -1,0 +1,379 @@
+﻿@model ViewModels.TourDetailViewModel
+@{
+		ViewBag.Title = Model.Tour.Title;
+		Layout = "~/Views/Shared/FrontEnd/_FronEndLayout.cshtml";
+}
+
+<div class="page-head white-content">
+	<div class="height50vh parallax-container  new-parallax" style="background-image:  url('@ViewBag.coverImage');">
+		<div class="page-head-wrap">
+			<div class="display-r">
+				<div class="display-a">
+					<div class="container">
+						<div class="row justify-content-center animate" data-animation="fadeInUp" data-timeout="500">
+							<div class="col-md-12">
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item"><a href="/">صفحه اصلی</a></li>
+										<li class="breadcrumb-item"><a href="/tour/@Model.TourCategory.UrlParam">@Model.TourCategory.Title</a></li>
+										<li class="breadcrumb-item">@Model.Tour.Title</li>
+									</ol>
+								</nav>
+								<h1 class="big-title mt-60 float-right">@Model.Tour.Title</h1>
+								@if (Model.Tour.IsSoldOut)
+								{
+									<span class="detail-sold-out">ظرفیت تکمیل</span>
+								}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="tour-single-info">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="tour-single-sidebar-info-item">
+					<span class="ti-calendar"></span>
+					<p class="date">@string.Format("{0:dd MMM yyyy}", Model.Tour.GoneDate)</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="tour-single-sidebar-info-item">
+					<span class="ti-timer"></span>
+					<p class="date">@Model.Tour.Duration</p>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="tour-single-sidebar-info-item">
+					<span class="ti-location-arrow"></span>
+					<p>@Model.Tour.Airline.Title</p>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="tour-single-sidebar-info-item">
+					<span class="ti-location-pin"></span>
+					<p>@Model.Tour.Country.Title</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="tour-single-sidebar-info-item">
+					<span class="ti-credit-card"></span>
+					<p class="price">@Model.Tour.Price</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="content mt-20 mb-40 container">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- tab-1 -->
+				<div class="tab-1">
+					<ul class="nav nav-tabs" role=tablist>
+						<li class="nav-item">
+							<a class="nav-link active" id="highlights-tab" data-toggle="tab" href="#tab-1" role="tab" aria-selected="true">اطلاعات تور</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="gallery-tab" data-toggle="tab" href="#tab-4" role="tab" aria-selected="false">تصاویر</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="book-tab" data-toggle="tab" href="#tab-5" role="tab" aria-selected="false">رزرو</a>
+						</li>
+					</ul>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="highlights-tab">
+							<div class="row">
+								<div class="col-md-12">
+									<table class="table table-bordered">
+										@if (!string.IsNullOrEmpty(Model.Tour.Body))
+										{
+												<tr>
+													<td>اطلاعات تکمیلی</td>
+													<td>@Html.Raw(Model.Tour.Body)</td>
+												</tr>
+}
+
+										@if (!string.IsNullOrEmpty(Model.Tour.AgencyService))
+										{
+												<tr>
+													<td>خدمات آژانس</td>
+													<td>@Html.Raw(Model.Tour.AgencyService)</td>
+												</tr>
+}
+										@if (!string.IsNullOrEmpty(Model.Tour.Documents))
+										{
+												<tr>
+													<td>مدارک لازم</td>
+													<td>
+														@Html.Raw(Model.Tour.Documents)
+
+														<p>
+															@if (!string.IsNullOrEmpty(Model.Tour.DocumentsFileUrl))
+															{
+																	<a class="btn-bektash" href="@Model.Tour.DocumentsFileUrl" target="_blank">دانلود مدارک مورد نیاز سفارت</a>
+}
+															@if (!string.IsNullOrEmpty(Model.Tour.FormFileUrl))
+															{
+																	<a class="btn-bektash" href="@Model.Tour.FormFileUrl" targ target="_blank">دانلود فرم</a>
+}
+														</p>
+													</td>
+												</tr>
+}
+										@if (!string.IsNullOrEmpty(Model.Tour.MaxWeight))
+										{
+												<tr>
+													<td>حداکثر بار</td>
+													<td>@Html.Raw(Model.Tour.MaxWeight)</td>
+												</tr>
+}
+										@if (!string.IsNullOrEmpty(Model.Tour.Features))
+										{
+												<tr>
+													<td>امکانات تور</td>
+													<td>@Html.Raw(Model.Tour.Features)</td>
+												</tr>
+}
+										@if (!string.IsNullOrEmpty(Model.Tour.TripProgram) && Model.Tour.IsEurope == false)
+										{
+												<tr>
+													<td>برنامه سفر</td>
+													<td>@Html.Raw(Model.Tour.TripProgram)</td>
+												</tr>
+}
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="tab-4" role="tabpanel" aria-labelledby="gallery-tab">
+							<div class="row">
+								@foreach (var image in Model.Images)
+								{
+										<div class="col-md-4">
+											<div class="image-grid-item">
+												<a href="@image.ImageUrl" class="image-link">
+													<img src="@image.ImageUrl" alt="@image.Title" width="353" height="221" title="@image.Title">
+												</a>
+											</div>
+										</div>
+								}
+							</div>
+						</div>
+						<div class="tab-pane fade" id="tab-5" role="tabpanel" aria-labelledby="book-tab">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="tour-single-sidebar-form mb-30">
+										<div class="alert alert-success" id="SuccessDivQ">رزرو شما با موفقیت انجام شد. برای هماهنگی بیشتر با شما تماس حاصل خواهد شد.</div>
+										<div class="alert alert-danger" id="errorDivQ"></div>
+										<div id="modal-book" class="form-block">
+											<div class="form-group col-md-12">
+												<label class="col-form-label">نام و نام خانوادگی</label>
+												<input class="form-control" name="name" id="txtFullname" type="text" value="" placeholder="نام و نام خانوادگی" />
+											</div>
+											<div class="form-group col-md-12">
+												<label class="col-form-label">ایمیل</label>
+												<input class="form-control" type="email" id="txtEmail" name="email" value="" placeholder="ایمیل" />
+											</div>
+											<div class="form-group col-md-12">
+												<label class="col-form-label">موبایل</label>
+												<input class="form-control" type="text" id="txtMobile" name="mobile" value="" placeholder="موبایل" />
+											</div>
+											<div class="form-group col-md-12">
+												<label class="col-form-label">تعداد نفرات</label>
+												<input class="form-control" type="text" id="txtNumber" name="person" value="" placeholder="نفرات" />
+											</div>
+											<div class="form-group col-md-12">
+												<button type="button" class="btn btn-1 mt-20 width100" id="btnReserve" onClick="Reservation(); return false;">رزرو</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="tour-single-sidebar mb-30 tour-single-sidebar-padding">
+										<h4>پشتیبانی 24 ساعته</h4>
+										<ul class="support">
+											<li><span class="ti-time reserve-time"></span>شنبه تا چهارشنبه 9-17:30</li>
+											<li><span class="ti-time reserve-time"></span>پنج شنبه 9-14:30</li>
+											<li><span class="ti-headphone-alt reserve-time"></span>02157952</li>
+											<li><span class="ti-email reserve-time"></span><a href="#">info@bektashtravel.com</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12 mt-30"><h2>اطلاعات پکیج ها و قیمت ها</h2></div>
+			<div class="col-md-12">
+				<div class="tour-single-sidebar-form mb-30">
+					<div id="modal-book" class="form-block">
+						<div class="table-responsive">
+							<table class="table table-bordered table-responsive ">
+								<thead>
+									<tr>
+										<th>اطلاعات هتل</th>
+										<th>پکیج دو تخته</th>
+										<th>پکیج یک تخته</th>
+										<th>پکیج کودک با تخت</th>
+										<th>پکیج کودک بدون تخت</th>
+										<th>رزور پکیج</th>
+									</tr>
+								</thead>
+								<tbody class="multi-hotel">
+									@foreach (var item in Model.TourPackages)
+									{
+											<tr>
+												<td>
+													<ul>
+														<li>
+															@item.Hotel.Title
+															<br /> @for (int j = 0; j < item.Hotel.Star; j++)
+															{
+																	<i class="fa fa-star"></i>
+}
+														</li>
+													</ul>
+												</td>
+												<td>
+													@if (item.TwoBedRoomPrice.ToString() != "00")
+													{
+															@item.TwoBedRoomPrice
+}
+													else
+													{
+															@Html.Label("_")
+}
+													@if (item.TwoBedRoomPrice_ExtraNight != null)
+													{
+															<p class="extra-night">شب اضافه: @item.TwoBedRoomPrice_ExtraNight</p>
+}
+												</td>
+												<td>
+													@if (item.OneBedRoomPrice.ToString() != "00")
+													{
+															@item.OneBedRoomPrice
+}
+													else
+													{
+															@Html.Label("_")
+}
+
+													@if (item.OneBedRoomPrice_ExtraNight != null)
+													{
+															<p class="extra-night">شب اضافه: @item.OneBedRoomPrice_ExtraNight</p>
+}
+												</td>
+												<td>
+													@if (item.ChildWithBedPrice.ToString() != "00")
+													{
+															@item.ChildWithBedPrice
+}
+													else
+													{
+															@Html.Label("_")
+}
+													@if (item.ChildWithBedPrice_ExtraNight != null)
+													{
+															<p class="extra-night">شب اضافه: @item.ChildWithBedPrice_ExtraNight</p>
+}
+												</td>
+												<td>
+													@if (item.ChildWithoutBedPrice.ToString() != "00")
+													{
+														@item.ChildWithoutBedPrice}
+													else
+													{
+														@Html.Label("_")
+													}
+
+														@if (item.ChildWithoutBedPrice_ExtraNight != null)
+														{
+															<p class="extra-night">شب اضافه: @item.ChildWithoutBedPrice_ExtraNight</p>
+														}
+														</td>
+												
+														<td>
+															<a href="/basket?code=@item.Id" class="btn-bektash"><i class="fa fa-bookmark"></i> رزرو پکیج</a>
+														</td>
+														</tr>
+									}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			@if (Model.Tour.IsEurope == true)
+			{
+					<div class="col-md-12 mt-30 tour-program-desc">
+						<h2>برنامه سفر @Model.Tour.Title</h2>
+						@Html.Raw(Model.Tour.TripProgram)
+					</div>
+					<div class="col-md-12">
+						<div class="tour-program-section mb-30">
+							<ul>
+								@foreach (var detail in Model.Tour.TourDetails.Where(c => c.IsDelete == false).OrderBy(current => current.Order))
+								{
+										<li data-toggle="collapse" href="@string.Format("#multiCollapseExample{0}", detail.Order)" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+											<a class="btn-tour-program">@detail.Title</a>
+											<a class="btn-tour-program"><i class="fa fa-angle-down"></i></a>
+											@if (detail.Order == 1)
+											{
+													<div class="collapse show multi-collapse" id="@string.Format("multiCollapseExample{0}", detail.Order)">
+														<div class="card card-body">
+															<p>
+																@Html.Raw(detail.Body)
+															</p>
+														</div>
+													</div>
+}
+											else
+											{
+													<div class="collapse multi-collapse" id="@string.Format("multiCollapseExample{0}", detail.Order)">
+														<div class="card card-body">
+															<p>
+																@Html.Raw(detail.Body)
+															</p>
+														</div>
+													</div>
+}
+										</li>
+								}
+							</ul>
+						</div>
+					</div>
+			}
+			<div class="col-md-12 mt-30">
+				<h2>تورهای مشابه</h2>
+			</div>
+			@foreach (var tour in Model.SuggestedTours)
+			{
+					<div class="col-md-6 col-lg-4">
+						<div class="tour-item">
+							<a href="/tour/@tour.TourCategory.UrlParam/@tour.Code">
+								<div class="img-wrap">
+									<img src="@tour.ImageUrl" alt="">
+									<p class="price">@tour.Price</p>
+								</div>
+							</a>
+							<div class="caption">
+								<a href="/tour/@tour.TourCategory.UrlParam/@tour.Code">
+									<p class="title">@tour.Title</p>
+								</a>
+								<p class="date"><span class="ti-calendar"></span>@string.Format("{0:dd MMM yyyy}", tour.GoneDate)</p>
+								<p class="time"><span class="ti-time"></span>@tour.Duration</p>
+							</div>
+						</div>
+					</div>
+			}
+		</div>
+	</div>
+</div>
+

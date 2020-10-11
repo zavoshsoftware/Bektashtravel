@@ -1,0 +1,214 @@
+﻿@model ViewModels.AboutViewModel
+@{
+		ViewBag.Title = "درباره ما | بکتاش سیر گشت";
+	ViewBag.Description = "بکتاش سیر گشت ارائه دهنده تورهای متنوع آسیایی و اروپایی و تور کانادا. جهت اخذ ویزا کارشناسان می توانند شما را راهنمایی نمایند و به صورت تضمینی ویزای خود را اخذ کنید.";
+
+
+				Layout = "~/Views/Shared/FrontEnd/_FronEndLayout.cshtml";
+		ViewBag.Canonical = "https://www.bektashtravel.com/about";
+}
+
+@section headSection{
+	<link href="~/Content/css/style-counter.css" rel="stylesheet" />
+}
+<div class="page-head white-content">
+	<div class="height50vh parallax-container newstyle" style="background-image: url(/Images/bektash-member3.jpg);">
+		<div class="page-head-wrap">
+			<div class="display-r">
+				<div class="display-a">
+					<div class="container">
+						<div class="row justify-content-center animate" data-animation="fadeInUp" data-timeout="500">
+							<div class="col-md-12">
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item"><a href="/">صفحه اصلی</a></li>
+										<li class="breadcrumb-item"><a href="/about">درباره ما</a></li>
+									</ol>
+								</nav>
+								<h1 class="big-title mt-60">درباره ما</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- / page-head -->
+<!-- content -->
+<div class="content mt-60 mb-40">
+	<div class="container">
+		<div class="row">
+			@*<div class="col-md-12 col-lg-5">
+						<img src="~/Images/img/Tour/distination-2.jpeg" alt="About" />
+				</div>*@
+			<div class="col-md-12 col-lg-12">
+				<div class="blockquote-1">
+					<p class="about-text">
+						@Html.Raw(Model.About.Body)
+					</p>
+					@*<span class="author">بکتاش سیر<span class="ti-face-smile"></span></span>*@
+				</div>
+			</div>
+
+			<div class="col-md-12 text-center mt-20 mb-20">
+				<h2>تیم بکتاش سیر</h2>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="content-box mb-20">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="team-item-1">
+									<img src="/images/team/team2.jpg" alt="Team 1">
+									<div class="team-info text-center mb-10">
+										<p class="name">مجتبی گرمخورانی</p>
+										<p class="position">مدیر عامل</p>
+										<p class="position phone-number">داخلی: 101</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="team-item-1">
+									<img src="/images/team/team1.jpg" alt="Team 1">
+									<div class="team-info text-center mb-10">
+										<p class="name">الهام بیگی</p>
+										<p class="position">مدیر</p>
+										<p class="position phone-number">داخلی: 101</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="team-item-1">
+									<img src="/images/team/team3.jpg" alt="Team 1">
+									<div class="team-info text-center mb-10">
+										<p class="name">نیلوفر فریدنی</p>
+										<p class="position">مدیر تور</p>
+										<p class="position phone-number">داخلی: 115</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="team-item-1">
+									<img src="/images/team/team4.jpg" alt="Team 1">
+									<div class="team-info text-center mb-10">
+										<p class="name">مرضیه جلالی</p>
+										<p class="position">مسئول بخش ویزا</p>
+										<p class="position phone-number">داخلی: 103</p>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="content-box mb-20">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="team-item-1">
+									<img src="/images/team/team5.jpg" alt="Team 1">
+									<div class="team-info text-center mb-10">
+										<p class="name">امین صوابی</p>
+										<p class="position">مشاور سفر</p>
+										<p class="position phone-number">داخلی: 105</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="team-item-1">
+									<img src="/images/team/team6.jpg" alt="Team 1">
+									<div class="team-info text-center mb-10">
+										<p class="name">فرانک فریدونی</p>
+										<p class="position">مشاور سفر</p>
+										<p class="position phone-number">داخلی: 107</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="team-item-1">
+									<img src="/images/team/team7.jpg" alt="Team 1">
+									<div class="team-info text-center mb-10">
+										<p class="name">مهسا صفدری</p>
+										<p class="position">مشاور سفر</p>
+										<p class="position phone-number">داخلی: 119</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="team-item-1">
+									<img src="/images/team/team8.jpg" alt="Team 1">
+									<div class="team-info text-center mb-10">
+										<p class="name">نفیسه نظری</p>
+										<p class="position">مسئول امور اداری</p>
+										<p class="position phone-number">داخلی: 109</p>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row counter-section">
+
+
+				<div class="col-md-3 count-item">
+					<p>تعداد کارمندان</p>
+					<div id="count-test-4"></div>
+				</div>
+
+				<div class="col-md-3 count-item">
+					<p>تعداد ویزا اخذ شده</p>
+					<div id="count-test-3"></div>
+				</div>
+
+				<div class="col-md-3 count-item">
+					<p>تعداد تورهای برگزارشده</p>
+					<div id="count-test-2"></div>
+				</div>
+
+				<div class="col-md-3 count-item">
+					<p>تعداد مشتری</p>
+					<div id="count-test-1"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="seprate40"></div>
+
+
+
+@section scripts{
+	<script src="~/Scripts/jQuerySimpleCounter.js"></script>
+
+	<script type="text/javascript">
+
+		$('#count-test-1').jQuerySimpleCounter({
+			end: 8067
+		});
+		$('#count-test-2').jQuerySimpleCounter({
+			end: 2330
+		});
+		$('#count-test-3').jQuerySimpleCounter({
+			end: 1652
+		});
+		$('#count-test-4').jQuerySimpleCounter({
+			end: 17
+		});
+	</script>
+}

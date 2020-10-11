@@ -1,0 +1,147 @@
+﻿@model ViewModels.ProductDetailViewModel
+@{
+		ViewBag.Title = Model.Product.Title;
+		ViewBag.Title = Model.Product.Title + " | بکتاش";
+		Layout = "~/Views/Shared/FrontEnd/_FronEndLayout.cshtml";
+}
+
+<div class="page-head white-content">
+	<div class="height50vh parallax-container new-parallax" style="background-image: url('@ViewBag.headerImg');">
+		<div class="page-head-wrap">
+			<div class="display-r">
+				<div class="display-a">
+					<div class="container">
+						<div class="row justify-content-center animate" data-animation="fadeInUp" data-timeout="500">
+							<div class="col-md-12">
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item"><a href="/">صفحه اصلی</a></li>
+										<li class="breadcrumb-item"><a href="/productlist/@Model.Product.ProductGroup.UrlParam">@Model.Product.ProductGroup.Title</a></li>
+										<li class="breadcrumb-item"><a href="#">@Model.Product.Title</a></li>
+									</ol>
+								</nav>
+								<h1 class="big-title mt-60">@Model.Product.Title</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="content mt-60 mb-40 container">
+
+	<div class="row">
+		<div class="col-md-9">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="blog-single-body">
+						@Html.Raw(Model.Product.SmallBody)
+						<p class="alert alert-info">برای ثبت سفارش فرم زیر را تکمیل فرمایید.</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="blog-single-info">
+						<div class="blog-single-info-img product-img">
+							<img src="@Model.Product.ImageUrl" alt="@Model.Product.Title" class="img-fluid">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="blog-single-body">
+						@Html.Raw(Model.Product.Body)
+						<p class="alert alert-info">برای ثبت سفارش فرم زیر را تکمیل فرمایید.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="tour-single-sidebar-form mb-30">
+						<div class="alert alert-success" id="SuccessDivQ">رزرو شما با موفقیت انجام شد. برای هماهنگی بیشتر با شما تماس حاصل خواهد شد.</div>
+						<div class="alert alert-danger" id="errorDivQ"></div>
+						<div id="modal-book" class="form-block">
+
+
+							@Html.Partial("_PartialForm", ViewData["Page"])
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="sidebar">
+				@*<div class="sidebar-item mb-30">
+							<form method="POST">
+									<div class="input-group">
+											<input type="text" name="search" id="search" placeholder="Search..." class="form-control">
+											<span class="input-group-btn">
+													<button type="submit" class="btn btn-3"><span class="ti-search"></span></button>
+											</span>
+									</div>
+							</form>
+					</div>*@
+
+				<div class="sidebar-item mb-40">
+					<p class="sidebar-title">گروه محصولات</p>
+					<ul class="categories">
+						@foreach (var productGroup in Model.SidebarProductGroups)
+						{
+								<li>
+									<a href="/productlist/@productGroup.UrlParam">@productGroup.Title</a>
+									<p class="clear"></p>
+								</li>
+						}
+					</ul>
+				</div>
+
+
+			</div>
+		</div>
+
+	</div>
+
+
+	<div class="row">
+		<div class="col-md-12 mt-30">
+			<h2>سایر محصولات پیشنهادی</h2>
+		</div>
+		@foreach (var product in Model.RelatedProducts)
+		{
+				<div class="col-md-3 col-lg-3">
+					<div class="tour-item">
+						<a href="/product-detail/@product.Code">
+							<div class="img-wrap">
+								<img src="@product.ImageUrl" alt="@product.Title" />
+							</div>
+						</a>
+						<div class="caption caption-pro">
+							<a href="/product-detail/@product.Code">
+								<p class="title pro-title">@product.Title</p>
+							</a>
+							<p class="summery">@product.Summery</p>
+							<p class="summery">@product.AmountStr تومان</p>
+							<a class="btn btn-bektash" href="/product-detail/@product.Code">افزودن به سبد خرید</a>
+						</div>
+					</div>
+				</div>
+		}
+	</div>
+</div>
+
+@section scripts{
+	<script>
+		$(function () {
+			$('.datepicker').datepicker({
+				format: 'mm-dd-yyyy'
+			});
+		});
+	</script>
+}

@@ -1,0 +1,115 @@
+﻿@model ViewModels.ProductDetailPostViewModel
+ 
+@using (Html.BeginForm("DetailsLottery", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+		@*@Html.HiddenFor(c => c.Product.Id)
+		@Html.HiddenFor(c => c.Product)
+		@Html.HiddenFor(c => c.MenuBlogGroups)
+		@Html.HiddenFor(c => c.Menu)
+		@Html.HiddenFor(c => c.Footer)
+		@Html.HiddenFor(c => c.Product.Amount)
+		@Html.HiddenFor(c => c.SidebarProductGroups)*@
+		@Html.AntiForgeryToken()
+		<div class="panel panel-default">
+			<div class="panel-heading">اطلاعات فردی</div>
+			<div class="panel-body">
+				<input type="hidden" value="@ViewBag.Code" name="Code" id="Code"/>
+				<div class="row">
+					<div class="form-group col-md-6">
+						@Html.LabelFor(model => model.FirstName, new { @class = "col-form-label" })
+
+						@Html.TextBoxFor(item => item.FirstName, new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.FirstName), @required = "required" })
+ 
+
+
+					</div>
+
+					<div class="form-group col-md-6">
+						@Html.LabelFor(model => model.LastName, new { @class = "col-form-label" })
+
+						@Html.TextBoxFor(item => item.LastName, new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.LastName), @required = "required" })
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-6">
+						@Html.LabelFor(model => model.Email, new { @class = "col-form-label" })
+
+						@Html.TextBoxFor(item => item.Email, new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.Email) })
+					</div>
+					<div class="form-group col-md-6">
+						@Html.LabelFor(model => model.CellNumber, new { @class = "col-form-label" })
+
+						@Html.TextBoxFor(item => item.CellNumber, new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.CellNumber), @required = "required" })
+					</div>
+				</div>
+
+
+				@*<div class="row">
+					<div class="form-group col-md-6">
+						<label class="col-form-label">نوع ویزا</label>
+						@Html.DropDownList("VisaTypeId", null, String.Empty, new { @class = "form-control" })
+
+					</div>
+					<div class="form-group col-md-6">
+						@Html.LabelFor(model => model.BirthDate, new { @class = "col-form-label" })
+						@Html.TextBoxFor(item => item.BirthDate, new { @class = "form-control", type = "date" })
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-6">
+						@Html.LabelFor(model => model.PasportNumber, new { @class = "col-form-label" })
+
+						@Html.TextBoxFor(item => item.PasportNumber, new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.PasportNumber) })
+
+
+					</div>
+					<div class="form-group col-md-6">
+						@Html.LabelFor(model => model.PasportExpireDate, new { @class = "col-form-label" })
+						@Html.TextBoxFor(item => item.PasportExpireDate, new { @class = "form-control", type = "date" })
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-6">
+						@Html.LabelFor(model => model.Nationality, new { @class = "col-form-label" })
+
+						@Html.TextBoxFor(item => item.Nationality, new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.Nationality) })
+
+
+					</div>
+					<div class="form-group col-md-6">
+						@Html.LabelFor(model => model.VisitDate1, new { @class = "col-form-label" })
+						@Html.TextBoxFor(item => item.VisitDate1, new { @class = "form-control", type = "date" })
+					</div>
+				</div>
+
+
+				<div class="row">
+
+					<div class="form-group col-md-6">
+						@Html.LabelFor(model => model.VisitDate2, new { @class = "col-form-label" })
+						@Html.TextBoxFor(item => item.VisitDate2, new { @class = "form-control", type = "date" })
+					</div>
+					<div class="form-group col-md-6">
+						@Html.LabelFor(model => model.TravelDate, new { @class = "col-form-label" })
+						@Html.TextBoxFor(item => item.TravelDate, new { @class = "form-control", type = "date" })
+					</div>
+				</div>
+				<div class="row">
+
+					<div class="form-group col-md-12">
+						<label class="col-form-label">آپلود پاسپورت</label>
+						<input type="file" name="fileUpload" id="fileUpload" class="form-control">
+					</div>
+
+				</div>*@	 
+
+				<div class="form-group col-md-12">
+					<button type="submit" class="btn btn-1 mt-20 width100">افزودن به سبد خرید</button>
+				</div>
+
+			</div>
+		</div>
+}

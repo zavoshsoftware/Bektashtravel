@@ -1,0 +1,142 @@
+﻿@model ViewModels.VisaListViewModel
+@{
+    Layout = "~/Views/Shared/FrontEnd/_FronEndLayout.cshtml";
+	ViewBag.Canonical = "https://www.bektashtravel.com/visa";
+
+}
+
+@section headSection{
+<link href="~/Content/css/style-counter.css" rel="stylesheet" />
+}
+<div class="page-head white-content">
+	<div class="height50vh parallax-container  new-parallax" style="background-image: url('/Images/headers/visa-header.jpg');">
+		<div class="page-head-wrap">
+			<div class="display-r">
+				<div class="display-a">
+					<div class="container">
+						<div class="row justify-content-center animate" data-animation="fadeInUp" data-timeout="500">
+							<div class="col-md-12">
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item"><a href="/">صفحه اصلی</a></li>
+										<li class="breadcrumb-item"><a href="#">ویزا</a></li>
+									</ol>
+								</nav>
+								<h1 class="big-title mt-60">ویزا</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="content mt-60 mb-40 container">
+	<div class="row">
+	
+		<div class="col-md-9">
+			<div class="row">
+				@foreach (var visa in Model.VisaList)
+				{
+					<div class="col-md-4 col-lg-4">
+						<div class="tour-item">
+							<a href="/visa/@visa.UrlParam">
+								<div class="img-wrap"><img src="@visa.ImageUrl" alt="@visa.Title"/>
+								</div>
+							</a>
+							<div class="caption">
+								<a href="/visa/@visa.UrlParam">
+									<p class="title">@visa.Title</p></a>
+								<p class="summery">@visa.Summery</p>
+							</div>
+						</div>
+					</div>
+				}
+			</div>
+		</div>
+		
+		<div class="col-md-3">
+
+
+			<div class="sidebar-bektash">
+				<div class="sidebar-header">
+					تورهای بکتاش
+				</div>
+				<div class="sidebar-body">
+					<ul>
+						@foreach (var tourCategory in Model.SidebarTourCategories)
+						{
+								<li><a href="/tour/@tourCategory.UrlParam">@tourCategory.Title</a></li>
+
+						}
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+ 
+<div class="row">
+	<div class="col-md-12">
+		<div class="row counter-section">
+			<div class="col-md-2 count-item-odd">
+				<p>ویزا اخذ شده اسپانیا</p>
+				<div id="count-test-5"></div>
+			</div>
+
+			<div class="col-md-2 count-item">
+				<p>ویزا اخذ شده ایتالیا</p>
+				<div id="count-test-4"></div>
+			</div>
+
+			<div class="col-md-2 count-item-odd">
+				<p>ویزا اخذ شده فرانسه</p>
+				<div id="count-test-3"></div>
+			</div>
+
+			<div class="col-md-2 count-item">
+				<p>ویزا اخذ شده استرالیا</p>
+				<div id="count-test-2"></div>
+			</div>
+
+			<div class="col-md-2 count-item-odd">
+				<p>ویزا اخذ شده شینگن</p>
+				<div id="count-test-6"></div>
+			</div>
+
+			<div class="col-md-2 count-item">
+				<p>ویزا اخذ شده کانادا</p>
+				<div id="count-test-1"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="seprate40"></div>
+
+@section scripts{
+	<script src="~/Scripts/jQuerySimpleCounter.js"></script>
+	
+	<script type="text/javascript">
+	 
+		$('#count-test-1').jQuerySimpleCounter({
+			end: 958
+		});
+		$('#count-test-2').jQuerySimpleCounter({
+			end: 58
+		});
+		$('#count-test-3').jQuerySimpleCounter({
+			end: 163
+		});
+		$('#count-test-4').jQuerySimpleCounter({
+			end: 193
+		});
+		$('#count-test-5').jQuerySimpleCounter({
+			end: 280
+		});
+		$('#count-test-6').jQuerySimpleCounter({
+			end: 636
+		});
+	</script>
+}

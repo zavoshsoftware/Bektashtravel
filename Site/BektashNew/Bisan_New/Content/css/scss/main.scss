@@ -1,0 +1,51 @@
+/*------------------------------------------------------------------
+[Master Stylesheet]
+
+Project:     VoyageTime
+Author:      AbsharBY
+Website:     http://abshar.by/VoyageTime
+
+[Table of contents]
+
+1.   Base styles (reset)
+2.   Varibles (fonts, sizes, colors)
+3.   Components (buttons, icons, icon with text, image with text, team, call to action, accordion & tabs)
+3.1  Heading
+3.2  Text elements
+3.3  Icons
+3.4  Buttons
+3.5  Forms
+3.6  Infography
+3.7  Call to action 
+3.8  Testimonials
+3.9  Tabs & accordions
+3.10 Team
+3.11 Counter
+3.12 Filters
+3.13 Categories Items
+3.14 Blog Items
+3.15 Tour Item
+4.   Pages styles
+4.1  Header
+4.2  Slider
+4.3  Page head
+4.4  Footer
+5.   Navigation styles
+6.   Animation
+7.   Media (media queries )
+-------------------------------------------------------------------*/
+
+// 1. base styles
+@import "inc/_base.scss";
+// 2. variables
+@import "inc/_variable.scss";
+// 3. components
+@import "inc/_component.scss";
+// 4. pages
+@import "inc/_page.scss";
+// 5. navigation
+@import "inc/_navigation.scss";
+// 6. animation
+@import "inc/_animation.scss";
+// 7. media
+@import "inc/_media.scss";

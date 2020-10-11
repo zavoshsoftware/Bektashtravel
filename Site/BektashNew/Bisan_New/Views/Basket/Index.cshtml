@@ -1,0 +1,112 @@
+﻿@model ViewModels.CartViewModel
+@{
+    ViewBag.Title = "سبد خرید";
+    Layout = "~/Views/Shared/FrontEnd/_FronEndLayout.cshtml";
+}
+
+
+
+
+<div class="page-head white-content">
+	<div class="height50vh parallax-container" style="background-image:  url('/Images/header1.jpg');">
+		<div class="page-head-wrap">
+			<div class="display-r">
+				<div class="display-a">
+					<div class="container">
+						<div class="row justify-content-center animate" data-animation="fadeInUp" data-timeout="500">
+							<div class="col-md-12">
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item"><a href="/">صفحه اصلی</a></li>
+									
+										<li class="breadcrumb-item">سبد خرید</li>
+									</ol>
+								</nav>
+								<h1 class="big-title mt-60 float-right">سبد خرید</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="basket-page">
+<div class="container">
+<div class="row">
+	<div class="col-md-4">
+		<div class="privacy-basket">
+		<h2>
+			دستورالعمل خرید از سایت
+		</h2>
+		<p>
+			۱. نام ونام خانوادگی ثبت شده مختص فرد استفاده کننده از خدمات باشد .
+		</p>
+		<p>
+			۲. پاسپورت ارسالی ۷ ماه اعتبار داشته باشد .
+		</p>
+		<p>
+			۳. اسکن پاسپورت شفاف و قابل خواندن باشد .
+		</p>
+		<p>
+			۴. در صورت بروز مشکل با شماره پشتیبانی <a href="tel:00989120132807">09120132807</a> تماس گرفته شود.
+		</p>
+		<p>
+			۵. شماره تماس واقعی و صحیح باشد در صورت هرگونه مشکل مسئولیت آن بعهده خود خریدار می باشد.
+		</p>
+	</div>
+
+	</div>
+	<div class="col-md-8">
+		<div class="tour-single-sidebar mb-30 tour-single-sidebar-padding">
+			<h4>سبد خرید</h4>
+			<table class="table table-bordered table-responsive">
+				<thead>
+				<tr>
+					<th>&nbsp;</th>
+					<th>عنوان محصول</th>
+		 
+					<th>قیمت</th>
+					<th>نام و نام خانوادگی</th>
+				</tr>
+				</thead>
+				
+				<tbody>
+				@foreach (var product in Model.Products)
+				{
+					<tr>
+						<td><a href="/basket/remove/@product.OrderDetailId"><img src="/Images/close.png"/></a></td>
+						<td>@product.Product.Title</td>
+				 
+						<td>@product.Amount</td>
+						<td>@product.FullName</td>
+					</tr>
+				}
+				
+				</tbody>
+				<tfoot>
+				<tr>
+					<td>جمع کل:</td>
+					<td>@Model.Total</td>
+				</tr>
+				</tfoot>
+			</table>
+			
+		 
+			<form id="form1" method="post" action="https://sep.shaparak.ir/payment.aspx">
+				<div>
+					<input type="hidden" name="Amount" value="@Model.Amount" />
+					<input type="hidden" name="ResNum" value="@Model.ResNum" />
+					<input type="hidden" name="MID" value="@Model.MID" />
+					<input type="hidden" name="RedirectURL" value="@Model.RedirectURL" />
+					<input type="submit" value="نهایی کردن خرید و پرداخت" class="btn btn-bektash" id="OK" />
+
+				 
+				</div>
+			</form>
+		</div>
+	</div>
+		</div>
+	</div>
+</div>

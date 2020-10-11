@@ -1,0 +1,123 @@
+﻿@model ViewModels.ContactViewModel
+@{
+	ViewBag.Title = "تماس با ما | بکتاش سیر گشت";
+	ViewBag.Description = "بکتاش سیر گشت ارائه دهنده تورهای متنوع آسیایی و اروپایی و تور کانادا. جهت تماس با کارشناسان ما می توانید با شماره تلفن 02197952 تماس حاصل فرمایید.";
+	Layout = "~/Views/Shared/FrontEnd/_FronEndLayout.cshtml";
+	ViewBag.Canonical = "https://www.bektashtravel.com/contact";
+}
+
+<div class="page-head white-content">
+    <div class="height50vh parallax-container newstyle" style="background-image: url(/Images/bektash-member3.jpg);">
+        <div class="page-head-wrap">
+            <div class="display-r">
+                <div class="display-a">
+                    <div class="container">
+                        <div class="row justify-content-center animate" data-animation="fadeInUp" data-timeout="500">
+                            <div class="col-md-12">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/home/index">صفحه اصلی</a></li>
+                                        <li class="breadcrumb-item"><a href="#">تماس با ما</a></li>
+                                    </ol>
+                                </nav>
+                                <h1 class="big-title mt-60">تماس با ما</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content mt-60 mb-40 container">
+    <div class="row">
+        <div class="col-md-4">
+            <h3 class="mb-20">شبکه های اجتماعی</h3>
+            <div class="clearfix mb-40 social">
+                <ul class="contact-social">
+                    @*<li><a href="#"><span class="ti-facebook"></span></a></li>*@
+                    <li><a href="https://www.instagram.com/bektashtravel/"><span class="ti-instagram"></span></a></li>
+                    <li>
+                        <a target="_blank" href="https://t.me/bektashtravel">
+                            <img src="/Images/telegram3.png" width="21" height="22" alt="telegram" />
+                        </a>
+                    </li>
+                    @*<li><a href="#"><span class="ti-twitter"></span></a></li>
+                    <li><a href="#"><span class="ti-youtube"></span></a></li>
+                    <li><a href="#"><span class="ti-pinterest"></span></a></li>*@
+                </ul>
+            </div>
+            <div class="contact-mr">
+                <h3 class="mb-20">با ما در تماس باشید</h3>
+
+                <form id="contact-form" class="mt-20 form-block" novalidate="novalidate">
+                    <div class="alert alert-success" id="SuccessDivQ">پیغام شما با موفقیت ثبت شد </div>
+                    <div class="alert alert-danger" id="errorDivQ"></div>
+                    <div class="form-row contact-form">
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" id="txtFullname" name="email" placeholder="نام و نام خانوادگی">
+                        </div>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" id="txtMobile" name="subject" placeholder="شماره تماس">
+                        </div>
+                        <div class="col-md-12">
+                            <textarea name="message" id="txtMessage" placeholder="پیغام"></textarea>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-1" id="btnSend" onClick="ContactMessage(); return false;">ارسال</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h3 class="mb-20">@Html.Raw(Model.Description.Title)</h3>
+
+            <p class="about-text">@Html.Raw(Model.Description.Body)</p>
+            <h3 class="mb-30">اطلاعات تماس</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contact-info mb-30">
+                        <h4>تهران</h4>
+                        <p><span class="ti-map-alt"></span>تهران، سعادت آباد، بلوار دریا، رو به روی خیابان صرافهای جنوبی، ساختمان 52، طبقه سوم</p>
+	                    <p><span class="ti-headphone-alt"></span>02157952 (خط ویژه)</p>
+											  <p><span class="ti-mobile"></span>09102263826</p>
+                        <p><span class="ti-email"></span><a href="#">info@bektashtravel.com</a></p>
+                    </div>
+                </div>
+                @*<div class="col-md-6">
+                    <div class="contact-info mb-30">
+                        <h4>Boston</h4>
+                        <p><span class="ti-map-alt"></span>610 Broadway New York, NY 10012</p>
+                        <p><span class="ti-headphone-alt"></span> 1800-2345-5677</p>
+                        <p><span class="ti-headphone-alt"></span> 1800-2345-5678</p>
+                        <p><span class="ti-email"></span><a href="mailto:info@voyagetime.com">info@voyagetime.com</a></p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="contact-info mb-30">
+                        <h4>San Francisco</h4>
+                        <p><span class="ti-map-alt"></span>610 Broadway New York, NY 10012</p>
+                        <p><span class="ti-headphone-alt"></span> 1800-2345-5677</p>
+                        <p><span class="ti-headphone-alt"></span> 1800-2345-5678</p>
+                        <p><span class="ti-email"></span><a href="mailto:info@voyagetime.com">info@voyagetime.com</a></p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="contact-info mb-30">
+                        <h4>Chicago</h4>
+                        <p><span class="ti-map-alt"></span>610 Broadway New York, NY 10012</p>
+                        <p><span class="ti-headphone-alt"></span> 1800-2345-5677</p>
+                        <p><span class="ti-headphone-alt"></span> 1800-2345-5678</p>
+                        <p><span class="ti-email"></span><a href="mailto:info@voyagetime.com">info@voyagetime.com</a></p>
+                    </div>
+                </div>*@
+            </div>
+        </div>
+       
+    </div>
+</div>
+<div class="map-wrap">
+	<iframe src="https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d3849.7385633700014!2d51.37403466015551!3d35.76969282539202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d35.7707167!2d51.3749854!5e0!3m2!1sen!2sar!4v1578236830547!5m2!1sen!2sar" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+</div>

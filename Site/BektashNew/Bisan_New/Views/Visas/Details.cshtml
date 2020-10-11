@@ -1,0 +1,109 @@
+﻿@model ViewModels.VisaDetailViewModel
+
+@{
+		Layout = "~/Views/Shared/FrontEnd/_FronEndLayout.cshtml";
+}
+@section headSection{
+
+	<link href="~/Content/css/sidebar-stick.css" rel="stylesheet" />
+}
+<div class="page-head white-content">
+	<div class="height50vh parallax-container" style="background-image: url('/Images/header1.jpg');">
+		<div class="page-head-wrap">
+			<div class="display-r">
+				<div class="display-a">
+					<div class="container">
+						<div class="row justify-content-center animate" data-animation="fadeInUp" data-timeout="500">
+							<div class="col-md-12">
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item"><a href="/">صفحه اصلی</a></li>
+										<li class="breadcrumb-item"><a href="/visa">ویزا</a></li>
+										<li class="breadcrumb-item"><a href="#">@Model.Visa.Title</a></li>
+									</ol>
+								</nav>
+								<h1 class="big-title mt-60">@Model.Visa.Title</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container visa">
+	<div class="row visa-top-content">
+
+		<div class="col-md-8">
+			@Html.Raw(Model.Visa.Description)
+			@if (!string.IsNullOrEmpty(Model.Visa.Form))
+			{
+					<a class="btn-bektash" target="_blank" href="@Model.Visa.Form">دانلود فرم های اطلاعاتی</a>
+
+			}
+			@if (!string.IsNullOrEmpty(Model.Visa.Document))
+			{
+					<a class="btn-bektash" target="_blank" href="@Model.Visa.Document">دانلود مدارک مورد نیاز</a>
+
+			}
+
+		</div>
+		<div class="col-md-4">
+			<img src="@Model.Visa.ImageUrl" class="img-fluid" />
+		</div>
+	</div>
+	<div class="main-content">
+		<div class="content-holder">
+			@foreach (var visaDetail in Model.VisaDetails)
+			{
+					<h2 id="@visaDetail.UrlParam">@visaDetail.Title</h2>
+					<p> @Html.Raw(visaDetail.Description)</p>
+			}
+
+		</div>
+
+		<div id="sticky" class="d-none d-md-block">
+			<ul class="list-group">
+				@foreach (var visaDetail in Model.VisaDetails)
+				{
+						<li class="list-group-item">
+							<a href="#@visaDetail.UrlParam">@visaDetail.Title</a>
+						</li>
+
+				}
+			</ul>
+		</div>
+	</div>
+
+	@if (Model.SuggestedTours.Any()) { 
+		<div class="row">
+			<div class="col-md-12 mt-30">
+				<h2>تورهای پیشنهادی</h2>
+			</div>
+			</div>
+			<div class="row">
+				@foreach (var tour in Model.SuggestedTours)
+				{
+						<div class="col-md-6 col-lg-4">
+							<div class="tour-item">
+								<a href="/tour/@tour.TourCategory.UrlParam/@tour.Code">
+									<div class="img-wrap">
+
+										<img src="@tour.ImageUrl" alt="">
+										<p class="price">@tour.Price</p>
+									</div>
+								</a>
+								<div class="caption">
+									<a href="/tour/@tour.TourCategory.UrlParam/@tour.Code">
+										<p class="title">@tour.Title</p>
+									</a>
+									<p class="date"><span class="ti-calendar"></span>@string.Format("{0:dd MMM yyyy}", tour.GoneDate)</p>
+									<p class="time"><span class="ti-time"></span>@tour.Duration</p>
+								</div>
+							</div>
+						</div>
+
+				}
+			</div>
+	}
+</div>

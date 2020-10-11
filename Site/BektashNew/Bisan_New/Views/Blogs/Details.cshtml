@@ -1,0 +1,146 @@
+﻿@model ViewModels.BlogDetailViewModel
+@{
+    ViewBag.Title = Model.Blog.Title;
+    Layout = "~/Views/Shared/FrontEnd/_FronEndLayout.cshtml";
+}
+<div class="page-head white-content">
+    <div class="height50vh parallax-container  new-parallax" style="background-image:  url('@ViewBag.headerImg');">
+        <div class="page-head-wrap">
+            <div class="display-r">
+                <div class="display-a">
+                    <div class="container">
+                        <div class="row justify-content-center animate" data-animation="fadeInUp" data-timeout="500">
+                            <div class="col-md-12">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/">صفحه اصلی</a></li>
+                                        <li class="breadcrumb-item"><a href="/blog/@Model.Blog.BlogGroup.UrlParam">@Model.Blog.BlogGroup.Title</a></li>
+                                        <li class="breadcrumb-item"><a href="#">@Model.Blog.Title</a></li>
+                                    </ol>
+                                </nav>
+                                <h1 class="big-title mt-60">@Model.Blog.Title</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content mt-60 mb-40 container">
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="blog-single-info">
+                <div class="blog-single-info-img">
+                    <img src="@Model.Blog.ImageUrl" alt="@Model.Blog.Title" class="img-fluid">
+                    <span class="blog-item-date">@string.Format("{0:dd MMM yyyy}", Model.Blog.SubmitDate)</span>
+                </div>
+                <div class="caption">
+                    <span class="blog-item-author"><span class="ti-user"></span> <a href="#">@Model.Blog.VisitNumber بازدید</a></span>
+                    <div class="blog-item-comment">
+                        <span class="ti-comment-alt"></span><a href="#comments">@Model.Comments.Count()</a>
+                    </div>
+                    @*<div class="blog-item-comment">
+                        <span class="font-iransans-fa">@Model.Blog.VisitNumber<i class="fa fa-eye"></i></span>
+                    </div>*@
+
+                </div>
+            </div>
+            <div class="blog-single-body">@Html.Raw(Model.Blog.Description)</div>
+
+
+
+            <div class="blog-comments mt-50" id="comments">
+                <hr>
+                <h3>@Model.Comments.Count() نظر</h3>
+                @foreach (var comment in Model.Comments)
+                {
+                    <div class="blog-comment-item">
+                        <div class="avatar text-center clearfix">
+                            <img src="~/Images/avatar.png" />
+                            @*<img src="https://via.placeholder.com/120x120" alt="Avatar image">*@
+                            @*<a class="btn btn-1 btn-sm" href="#">Replay</a>*@
+                        </div>
+                        <div class="blog-comment-content">
+                            <h5>@comment.Fullname</h5>
+                            <p class="blog-comment-info">@string.Format("{0:dd MMM yyyy}", comment.SubmitDate)</p>
+                            <p>@Html.Raw(comment.Description)</p>
+                        </div>
+                    </div>
+                }
+            </div> <!-- / .blog-comments -->
+            <div class="blog-comments-form mt-50 mb-50">
+                <h3>ارسال نظر</h3>
+                <form id="comment-form" method="POST" class="mt-20" novalidate="novalidate">
+                    <div class="alert alert-success" id="SuccessDivQ">نظر شما با موفقیت ثبت شد<br /> پس از تایید مدیر سایت نمایش داده خواهد شد.</div>
+                    <div class="alert alert-danger" id="errorDivQ"></div>
+                    <div class="form-row contact-form">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="txtFullname" name="name" placeholder="نام و نام خانوادگی">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="txtMobile" name="phone" placeholder="شماره تماس">
+                        </div>
+                        <div class="col-md-12">
+                            <textarea name="message" id="txtMessage" placeholder="نظر شما"></textarea>
+                        </div>
+                        <div class="col-auto mt-10">
+                            <button type="button" class="btn btn-1" onClick="BlogComment(); return false;">ارسال</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="sidebar">
+                @*<div class="sidebar-item mb-30">
+                        <form method="POST">
+                            <div class="input-group">
+                                <input type="text" name="search" id="search" placeholder="Search..." class="form-control">
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-3"><span class="ti-search"></span></button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>*@
+                <div class="sidebar-item mb-40">
+                    <p class="sidebar-title">جدیدترین مطالب</p>
+                    @foreach (var blog in Model.RecentBlogs)
+                    {
+                        <div class="sidebar-post-inner mb-10">
+
+
+                            <div class="sidebar-post-image">
+                                <a href="/blog/@blog.BlogGroup.UrlParam/@blog.UrlParam">
+                                    <img src="@blog.ImageUrl" alt="@blog.Title">
+                                </a>
+                            </div>
+                            <div class="sidebar-post-contents">
+                                <a href="/blog/@blog.BlogGroup.UrlParam/@blog.UrlParam">@blog.Title</a><br />
+                                <span class="sidebar-blog-date">@string.Format("{0:dd MMM yyyy}", blog.SubmitDate)</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="sidebar-item mb-40">
+                    <p class="sidebar-title">گروه مطالب وبلاگ</p>
+                    <ul class="categories">
+                        @foreach (var blogGroup in Model.BlogGroups)
+                        {
+                            <li>
+                                <a href="/Blog/@blogGroup.UrlParam">@blogGroup.Title</a><span>@blogGroup.Blogs.Count()</span>
+                                <p class="clear"></p>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+							 
+            </div>
+        </div>
+
+    </div>
+
+</div>
+

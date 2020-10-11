@@ -1,0 +1,60 @@
+/*- Font -*/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Merriweather:400,700');
+
+$font-content: "Open Sans", sans-serif !default;
+$font-heading: "Merriweather", serif !default;
+
+$font-size-base: 14px !default;
+
+$font-size-h1:	ceil($font-size-base * 2.10) !default; // ~33px
+$font-size-h2:	ceil($font-size-base * 1.70) !default; // ~24px
+$font-size-h3:	ceil($font-size-base * 1.40) !default; // ~19px
+$font-size-h4:	ceil($font-size-base * 1.10) !default; // ~18px
+$font-size-h5:	ceil($font-size-base * 1.0) !default; // ~16px
+$font-size-h6:	ceil($font-size-base * 0.80) !default; // ~13px
+
+$font-color:           #212121;
+$font-color-dark:      darken($font-color, 10%);
+$font-color-light:     lighten($font-color, 20%);
+$font-color-lighter:   lighten($font-color, 35%);
+
+
+/*- Color -*/
+
+$color-main: #f4a720;
+$color-second: #7C09A9;
+$color-third: #f4a720;
+
+$color-darken:  darken($color-main, 5%);
+$color-darker:  darken($color-main, 9%);
+$color-darkest: darken($color-main, 12%);
+$color-lighten: lighten($color-main, 5%);
+$color-lighter: lighten($color-main, 10%);
+$color-bright:  lighten($color-main, 45%);
+
+$tsprnt-white-01:	rgba(255,255,255,.1);
+$tsprnt-white-02:	rgba(255,255,255,.2);
+$tsprnt-white-03:	rgba(255,255,255,.3);
+$tsprnt-white-04:	rgba(255,255,255,.4);
+$tsprnt-white-05:	rgba(255,255,255,.5);
+$tsprnt-white-06:	rgba(255,255,255,.6);
+$tsprnt-white-07:	rgba(255,255,255,.7);
+$tsprnt-white-08:	rgba(255,255,255,.8);
+$tsprnt-white-09:	rgba(255,255,255,.9);
+
+$tsprnt-black-01:	rgba(0,0,0,.1);
+$tsprnt-black-02:	rgba(0,0,0,.2);
+$tsprnt-black-03:	rgba(0,0,0,.3);
+$tsprnt-black-04:	rgba(0,0,0,.4);
+$tsprnt-black-05:	rgba(0,0,0,.5);
+$tsprnt-black-06:	rgba(0,0,0,.6);
+$tsprnt-black-07:	rgba(0,0,0,.7);
+$tsprnt-black-08:	rgba(0,0,0,.8);
+$tsprnt-black-09:	rgba(0,0,0,.9);
+
+
+/*- Width -*/
+
+$site-min-width: 320px !default;
+$border-radius: 3px;

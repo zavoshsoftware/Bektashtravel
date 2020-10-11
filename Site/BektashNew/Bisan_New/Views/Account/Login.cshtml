@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/FrontEnd/_FronEndLayout.cshtml";
+}
+<div class="page-head white-content">
+    <div class="height50vh parallax-container" style="background-image: url(/Images/img/Slider/Kusadasi-02.jpg);">
+        <div class="page-head-wrap">
+            <div class="display-r">
+                <div class="display-a">
+                    <div class="container">
+                        <div class="row justify-content-center animate" data-animation="fadeInUp" data-timeout="500">
+                            <div class="col-md-12">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/">صفحه اصلی</a></li>
+                                        <li class="breadcrumb-item"><a href="#">لاگین</a></li>
+                                    </ol>
+                                </nav>
+                                <h1 class="big-title mt-60">لاگین</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content mt-60 mb-40 container">
+    <div class="row">
+        <div class="login-form">
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>
+
+

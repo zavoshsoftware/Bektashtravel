@@ -1,0 +1,115 @@
+﻿@model Models.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/BackEndLayout/_BackEndLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPaid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsPaid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliverFullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliverFullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliverCellNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliverCellNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliverEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliverEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RefId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RefId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDelete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDelete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeleteDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeleteDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubmitDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubmitDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastModificationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastModificationDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

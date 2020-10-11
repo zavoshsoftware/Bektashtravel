@@ -1,0 +1,100 @@
+﻿@model Models.Order
+
+@{
+    ViewBag.Title = "ویرایش ";
+    Layout = "~/Views/Shared/BackEndLayout/_BackEndLayout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Edit", "Orders",FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">        
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Code, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                                  @Html.EditorFor(model => model.Code)
+                @Html.ValidationMessageFor(model => model.Code)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TotalAmount, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                                  @Html.EditorFor(model => model.TotalAmount)
+                @Html.ValidationMessageFor(model => model.TotalAmount)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsPaid, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                                  @Html.EditorFor(model => model.IsPaid)
+                @Html.ValidationMessageFor(model => model.IsPaid)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliverFullName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                                  @Html.EditorFor(model => model.DeliverFullName)
+                @Html.ValidationMessageFor(model => model.DeliverFullName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliverCellNumber, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                                  @Html.EditorFor(model => model.DeliverCellNumber)
+                @Html.ValidationMessageFor(model => model.DeliverCellNumber)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliverEmail, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                                  @Html.EditorFor(model => model.DeliverEmail)
+                @Html.ValidationMessageFor(model => model.DeliverEmail)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PaymentDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                                  @Html.EditorFor(model => model.PaymentDate)
+                @Html.ValidationMessageFor(model => model.PaymentDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RefId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                                  @Html.EditorFor(model => model.RefId)
+                @Html.ValidationMessageFor(model => model.RefId)
+            </div>
+        </div>
+
+	 @Html.HiddenFor(model => model.SubmitDate)
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastModificationDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                                  @Html.EditorFor(model => model.LastModificationDate)
+                @Html.ValidationMessageFor(model => model.LastModificationDate)
+            </div>
+        </div>
+
+        <div class="form-group" id="buttons">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ثبت" class="btn btn-primary" />
+				@Html.ActionLink("بازگشت به فهرست", "Index")
+            </div>
+        </div>
+    </div>
+}
+

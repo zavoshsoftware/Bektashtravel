@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bisan_New", "Bisan_New\Bisan_New.csproj", "{4BEB7B45-D014-4B54-8D07-65BBB0766AC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resource", "Resource\Resource.csproj", "{2761A7FF-1F9F-4B11-9725-D091E05D518C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4BEB7B45-D014-4B54-8D07-65BBB0766AC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BEB7B45-D014-4B54-8D07-65BBB0766AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BEB7B45-D014-4B54-8D07-65BBB0766AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BEB7B45-D014-4B54-8D07-65BBB0766AC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2761A7FF-1F9F-4B11-9725-D091E05D518C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2761A7FF-1F9F-4B11-9725-D091E05D518C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2761A7FF-1F9F-4B11-9725-D091E05D518C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2761A7FF-1F9F-4B11-9725-D091E05D518C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {02B2E4CB-FF91-4A18-89BD-7F3710EB7B7F}
+	EndGlobalSection
+EndGlobal

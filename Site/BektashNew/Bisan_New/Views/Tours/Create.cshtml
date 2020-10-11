@@ -1,0 +1,288 @@
+﻿@model Models.Tour
+
+@{
+		ViewBag.Title = "افزودن تور";
+		Layout = "~/Views/Shared/BackEndLayout/_BackEndLayout.cshtml";
+}
+
+<h2>افزودن @Html.DisplayNameFor(model => model)</h2>
+
+@using (Html.BeginForm("Create", "Tours", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+		@Html.AntiForgeryToken()
+		@Html.ValidationSummary(true)
+
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">اطلاعات پایه ای تور</div>
+				<div class="panel-body">
+					<div class="form-horizontal">
+						
+						<div class="form-group">
+					 
+							<div class="form-group">
+								@Html.LabelFor(model => model.Title, new {@class = "control-label col-md-2"})
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.Title)
+
+									@Html.ValidationMessageFor(model => model.Title)
+								</div>
+							</div>
+
+							@if (User.Identity.IsAuthenticated)
+							{
+								var identity = (System.Security.Claims.ClaimsIdentity) User.Identity;
+								string role = identity.FindFirst(System.Security.Claims.ClaimTypes.Role).Value;
+								if (role == "superadmin")
+								{
+									<div class="form-group">
+										@Html.LabelFor(model => model.PageTitle, new {@class = "control-label col-md-2"})
+										<div class="col-md-10">
+											@Html.EditorFor(model => model.PageTitle)
+
+											@Html.ValidationMessageFor(model => model.PageTitle)
+										</div>
+									</div>
+
+									<div class="form-group">
+										@Html.LabelFor(model => model.PageDescription, new {@class = "control-label col-md-2"})
+										<div class="col-md-10">
+											@Html.EditorFor(model => model.PageDescription)
+
+											@Html.ValidationMessageFor(model => model.PageDescription)
+										</div>
+									</div>
+								}
+							}
+							<div class="form-group">
+								@Html.LabelFor(model => model.Priority, new {@class = "control-label col-md-2"})
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.Priority)
+
+									@Html.ValidationMessageFor(model => model.Priority)
+								</div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.Price, new {@class = "control-label col-md-2"})
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.Price)
+
+									@Html.ValidationMessageFor(model => model.Price)
+								</div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.TourCategory.Title, new {@class = "control-label col-md-2"})
+								<div class="col-md-10">
+									@Html.DropDownList("TourCategoryId", String.Empty)
+									@Html.ValidationMessageFor(model => model.TourCategoryId)
+								</div>
+							</div>
+							<div class="form-group">
+								@Html.LabelFor(model => model.Airline.Title, new {@class = "control-label col-md-2"})
+								<div class="col-md-10">
+									@Html.DropDownList("AirlineId", String.Empty)
+									@Html.ValidationMessageFor(model => model.AirlineId)
+								</div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.Country.Title, new {@class = "control-label col-md-2"})
+								<div class="col-md-10">
+									@Html.DropDownList("CountryId", String.Empty)
+									@Html.ValidationMessageFor(model => model.CountryId)
+								</div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.GoneDate, new {@class = "control-label col-md-2"})
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.GoneDate)
+
+									@Html.ValidationMessageFor(model => model.GoneDate)
+								</div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.ReturnDate, new {@class = "control-label col-md-2"})
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.ReturnDate)
+
+									@Html.ValidationMessageFor(model => model.ReturnDate)
+								</div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.ImageUrl, new {@class = "control-label col-md-2"})
+								<div class="col-md-10">
+									@Html.Kendo().Upload().Name("fileUpload").Multiple(false)
+									@Html.ValidationMessageFor(model => model.ImageUrl)
+								</div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.Duration, new {@class = "control-label col-md-2"})
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.Duration)
+
+									@Html.ValidationMessageFor(model => model.Duration)
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-md-2">
+								</div>
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.IsActive)
+
+									@Html.LabelFor(model => model.IsActive)
+									@Html.ValidationMessageFor(model => model.IsActive)
+								</div>
+
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.IsEurope)
+
+									@Html.LabelFor(model => model.IsEurope)
+									@Html.ValidationMessageFor(model => model.IsEurope)
+								</div>
+
+						
+
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.IsInHome)
+
+									@Html.LabelFor(model => model.IsInHome)
+									@Html.ValidationMessageFor(model => model.IsInHome)
+								</div>
+								
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.IsSpecial)
+									@Html.LabelFor(model => model.IsSpecial)
+									@Html.ValidationMessageFor(model => model.IsSpecial)
+								</div>
+								
+								
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.IsSoldOut)
+
+									@Html.LabelFor(model => model.IsSoldOut)
+									@Html.ValidationMessageFor(model => model.IsSoldOut)
+								</div>
+							
+							</div>
+							<div class="form-group">
+								@Html.LabelFor(model => model.Body, new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.Body)
+
+									@Html.ValidationMessageFor(model => model.Body)
+								</div>
+							</div>
+							<div class="form-group">
+								@Html.LabelFor(model => model.DocumentsFileUrl, new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.Kendo().Upload().Name("fileUploadDoc").Multiple(false)
+									@Html.ValidationMessageFor(model => model.DocumentsFileUrl)
+								</div>
+							</div>	
+							<div class="form-group">
+								@Html.LabelFor(model => model.FormFileUrl, new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.Kendo().Upload().Name("fileUploadForm").Multiple(false)
+									@Html.ValidationMessageFor(model => model.FormFileUrl)
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">اطلاعات تکمیلی تور</div>
+				<div class="panel-body">
+					<div class="form-horizontal">
+
+						<div class="form-group">
+
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.MaxWeight, new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.MaxWeight)
+
+									@Html.ValidationMessageFor(model => model.MaxWeight)
+								</div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.TripProgram, new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.TripProgram)
+
+									@Html.ValidationMessageFor(model => model.TripProgram)
+								</div>
+							</div>
+							
+
+							
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.AgencyService, new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.AgencyService)
+
+									@Html.ValidationMessageFor(model => model.AgencyService)
+								</div>
+							</div>
+							
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.Documents, new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.Documents)
+
+									@Html.ValidationMessageFor(model => model.Documents)
+								</div>
+							</div>
+							
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.Features, new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.Features)
+
+									@Html.ValidationMessageFor(model => model.Features)
+								</div>
+							</div>
+							 
+							
+							
+
+							<div class="form-group" id="buttons">
+								<div class="col-md-offset-2 col-md-10">
+									<input type="submit" value="ایجاد" class="btn btn-primary" />
+									@Html.ActionLink("بازگشت به فهرست", "Index", new { id = ViewBag.category })
+								</div>
+							</div>
+						</div>
+						
+						
+						
+						
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+}
+@*<script type="text/javascript">
+			$("#GoneDate").kendoDatePicker();
+			$("#ReturnDate").kendoDatePicker();
+	</script>*@

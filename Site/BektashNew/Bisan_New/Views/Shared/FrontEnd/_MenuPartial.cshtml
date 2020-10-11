@@ -1,0 +1,84 @@
+﻿@model ViewModels.BaseViewModel
+
+<header>
+	<div class="main-header">
+		<div class="container-fluid">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2 col-sm-2 col-2">
+						<div class="main-header-logo">
+							<a href="/"><img width="130" src="/Images/logo.png" alt="شرکت بکتاش"></a>
+						</div>
+					</div>
+					<div class="col-md-10 col-sm-10 col-10">
+						<div class="clearfix float-r contact-head">
+							<a href="tel:02157952" style="direction:ltr;" class="menu-phone">021 57952<span class="fa fa-phone"></span> </a>
+						</div>
+						<nav id="navigation" class="navigation mt-10">
+							<div class="nav-toggle"><span class="ti-menu"></span></div>
+							<div class="nav-menus-wrapper">
+								<ul class="nav-menu align-to-right">
+									<li><a class="active" href="/">صفحه اصلی</a></li>
+									@foreach (var menuTour in Model.Menu)
+									{
+													<li>
+														<a href="#">@menuTour.Type.Title</a>
+														<ul class="nav-dropdown">
+															
+															@foreach (var cat in menuTour.TourCategories)
+															{
+																<li>
+																	<a href="/tour/@cat.TourCategoryParent.UrlParam">@cat.TourCategoryParent.Title</a>
+																	<ul class="nav-dropdown">
+																		@foreach (var tourCategory in cat.TourCategory)
+																		{
+																			<li><a href="/tour/@tourCategory.UrlParam">@tourCategory.Title </a></li>
+																		}
+																	</ul>
+																</li>
+
+															}
+														</ul>
+													</li>
+									}
+							 
+									<li>
+										<a href="#">وبلاگ</a>
+										<ul class="nav-dropdown">
+											@foreach (var blogGroup in Model.MenuBlogGroups)
+											{
+													<li><a href="/blog/@blogGroup.UrlParam">@blogGroup.Title</a></li>
+}
+										</ul>
+									</li>
+									@*<li>
+										<a href="/visa">ویزا</a>
+										 
+									</li>*@
+						<li>
+										<a href="#">مشاوره آنلاین ویزا</a>
+										<ul class="nav-dropdown">
+		<li><a href="/productlist/canada-consult">مشاوره آنلاین ویزای کانادا</a></li>
+													<li><a href="/productlist/schengen-consult">مشاوره آنلاین ویزای شینگن</a></li>
+										</ul>
+									</li>
+						
+						<li>
+										<a href="#">خدمات ویزا</a>
+										<ul class="nav-dropdown">
+													<li><a href="/productlist/canada-visa-services	"> دریافت خدمات ویزای کانادا</a></li>
+													<li><a href="/productlist/schengen-visa-services	">دریافت خدمات ویزای شینگن</a></li>
+										</ul>
+									</li>
+						
+									<li><a href="/lottery">ثبت نام لاتاری</a></li>
+								</ul>
+							</div>
+						</nav>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</header>

@@ -1,0 +1,128 @@
+﻿@model ViewModels.ProductGroupListViewModel
+@{
+		Layout = "~/Views/Shared/FrontEnd/_FronEndLayout.cshtml";
+		ViewBag.Canonical = "https://www.bektashtravel.com/productlist/" + Model.ProductGroup.UrlParam;
+		ViewBag.Title = Model.ProductGroup.Title + " | بکتاش";
+}
+
+@section headSection{
+	<link href="~/Content/css/style-counter.css" rel="stylesheet" />
+	<style>
+		.why-us h2 {
+			color: #f4a720;
+			text-align: center;
+			margin-top: 30px;
+		}
+		.why-us h2 i{
+			color: #f4a720
+		}
+	</style>
+}
+<div class="page-head white-content">
+	<div class="height50vh parallax-container new-parallax" style="background-image: url('@ViewBag.headerImg');">
+		<div class="page-head-wrap">
+			<div class="display-r">
+				<div class="display-a">
+					<div class="container">
+						<div class="row justify-content-center animate" data-animation="fadeInUp" data-timeout="500">
+							<div class="col-md-12">
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item"><a href="/">صفحه اصلی</a></li>
+										<li class="breadcrumb-item"><a href="#">@Model.ProductGroup.Title</a></li>
+									</ol>
+								</nav>
+								<h1 class="big-title mt-60">@Model.ProductGroup.Title</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="content mt-60 mb-40 container">
+	<div class="row">
+
+		<div class="col-md-12">
+			<div class="alert alert-success" id="addtobasket-success"><a href="/basket">یک محصول به سبد خرید شما اضافه شد. برای مشاهده سبد خرید، اینجا را کلیک کنید</a></div>
+			
+			<div class="row">
+				@foreach (var product in Model.Products)
+				{
+					<div class="col-md-3 col-lg-3">
+						<div class="tour-item">
+							<a href="/product-detail/@product.Code">
+								<div class="img-wrap">
+									<img src="@product.ImageUrl" alt="@product.Title"/>
+								</div>
+							</a>
+							<div class="caption caption-pro">
+								<a href="/product-detail/@product.Code">
+									<p class="title pro-title">@product.Title</p>
+								</a>
+								<p class="summery">@product.Summery</p>
+								<p class="summery">@product.AmountStr تومان</p>
+								<a class="btn btn-bektash"  href="/product-detail/@product.Code">افزودن به سبد خرید</a>
+							</div>
+						</div>
+					</div>
+				}
+			</div>
+			
+			
+			
+			<div class="row why-us">
+				<div class="col-md-12">
+					<h2><i class="icon-star icons"></i><i class="icon-star icons"></i> چرا بکتاش سیر گشت؟ <i class="icon-star icons"></i><i class="icon-star icons"></i></h2>
+					<div class="content-box mb-20">
+						<div class="row">
+
+
+
+							<div class="col-md-3">
+								<div class="infography infography-2 text-center">
+									<i class="icon-plane icons"></i>
+									<div class="infography-title"><h4>پرونده های موفق فراوان</h4>
+									</div>
+									<div class="infography-description">آژانس بکتاش سیر گشت یکی از اولین آژانس های مسافرتی است که در زمینه اخذ ویزا برای مسافران خود اقدام می کند و این مجموعه پرونده های موفق بسیاری را ماهانه به اتمام می رساند.</div>
+								</div>
+							</div>
+							<!-- / Infography item style 2 -->
+							<!-- Infography item style 2 -->
+							<div class="col-md-3">
+								<div class="infography infography-2 text-center">
+									<i class="icon-flag icons"></i>
+									<div class="infography-title"><h4>پیگیری مداوم تا کسب ویزا</h4>
+									</div>
+									<div class="infography-description">یکی از مزایای بکتاش سیر گشت پیگیری مداوم کارشناسان این مجموعه از سفارت ها تا زمان اخذ ویزا می باشد. کادر مدیریتی و کارشناسان بکتاش از هیچ اقدامی جهت کسب موفقیت در دریافت ویزا کوتاهی نمی کنند.</div>
+								</div>
+							</div>
+							<!-- / Infography item style 2 -->
+							<!-- Infography item style 2 -->
+							<div class="col-md-3">
+								<div class="infography infography-2 text-center">
+									<i class="icon-people icons"></i>
+									<div class="infography-title"><h4>پشتیبانی 24 ساعته</h4>
+									</div>
+									<div class="infography-description">شما می توانید از طریق ابزارهای دیجیتال و شبکه های اجتماعی به صورت 24 ساعته با کارشناسان ما در ارتباط باشید و سوالات و مشکلات خود را با آن ها در میان بگذارید</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="infography infography-2 text-center">
+									<i class="icon-emotsmile icons"></i>
+									<div class="infography-title"><h4>به روز بودن دانش کارشناسان</h4>
+									</div>
+									<div class="infography-description">یکی از مهمترین ویژگی هایی که همواره باعث موفقیت تیم بکتاش در دریافت ویزای مشتریان بوده است، به روز بودن تیم این مجموعه و آگاهی آن ها به جدیدترین قوانین مهاجرتی و دریافت ویزا بوده است.</div>
+								</div>
+							</div>
+							<!-- / Infography item style 2 -->
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

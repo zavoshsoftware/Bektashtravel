@@ -1,0 +1,67 @@
+﻿@model ViewModels.ProductGroupListViewModel
+@{
+		ViewBag.Title = Model.ProductGroup.PageTitle;
+		Layout = "~/Views/Shared/FrontEnd/_FronEndLayout.cshtml";
+}
+
+
+<div class="page-head white-content">
+	<div class="height50vh parallax-container new-parallax" style="background-image: url('@ViewBag.headerImg');">
+		<div class="page-head-wrap">
+			<div class="display-r">
+				<div class="display-a">
+					<div class="container">
+						<div class="row justify-content-center animate" data-animation="fadeInUp" data-timeout="500">
+							<div class="col-md-12">
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item"><a href="/">صفحه اصلی</a></li>
+										<li class="breadcrumb-item"><a href="#">@Model.ProductGroup.Title</a></li>
+									</ol>
+								</nav>
+								<h1 class="big-title mt-60">@Model.ProductGroup.Title</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="content mt-60 mb-40 container">
+	<div class="row">
+
+		<div class="col-md-1"></div>
+		<div class="col-md-10 product-consult">
+	
+			<div class="alert alert-success" id="addtobasket-success"><a href="/basket">یک محصول به سبد خرید شما اضافه شد. برای مشاهده سبد خرید، اینجا را کلیک کنید</a></div>
+ 
+						<div class="row dirrtl">
+							<div class="col-md-12">
+
+											<table class="table table-bordered table-responsive">
+												<thead>
+												<tr>
+													<td>محصول</td>
+													<td>قیمت</td>
+													<td>توضیخات</td>
+													<td>افزودن به سبد خرید</td>
+												</tr>
+												</thead>
+												@foreach (var product in Model.Products)
+												{
+													<tr>
+														<td>@product.Title</td>
+														<td>@product.AmountStr تومان</td>
+														<td>@product.Summery</td>
+														<td><button class="btn btn-bektash" onclick="addToBasket('@product.Code');">افزودن به سبد خرید</button></td>
+													</tr>
+
+												}
+											</table>
+							</div>
+							</div>
+		</div>
+	</div>
+</div>

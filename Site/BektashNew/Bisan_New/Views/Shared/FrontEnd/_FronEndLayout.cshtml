@@ -1,0 +1,93 @@
+﻿@{
+		Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>@ViewBag.Title</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="@ViewBag.Description">
+	<link rel="icon" href="/Images/favicon.png">
+	<link rel="apple-touch-icon" href="/images/touch-icon-iphone.png" />
+	<link href="/Content/css/vendor/bootstrap.min.css" rel="stylesheet">
+	<link href="/Content/css/vendor/simple-line-icons.css" rel="stylesheet">
+	<link href="/Content/css/vendor/themify-icons.css" rel="stylesheet">
+	<link href="/Content/css/vendor/owl.carousel.css" rel="stylesheet">
+	<link href="/Content/css/vendor/animate.css" rel="stylesheet">
+	<link href="/Content/css/vendor/viewbox.css" rel="stylesheet">
+	<link href="/Content/css/vendor/bootstrap-slider.min.css" rel="stylesheet">
+	<link href="~/Content/PersianDatePicker.min.css" rel="stylesheet" />
+	<script src="/Scripts/js/vendor/fontawesome-all.min.js"></script>
+	<link href="/Content/css/scss/main.css" rel="stylesheet">
+	<link href="/Content/css/vendor/style-rtl.css" rel="stylesheet" />
+	<link rel="canonical" href="@ViewBag.Canonical" />
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110478869-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-110478869-1');
+	</script>
+	@RenderSection("headSection", required: false)
+</head>
+<body>
+	<div>
+		@Html.Partial("FrontEnd/_MenuPartial")
+		@RenderBody()
+
+		@*<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+    
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+			
+					</div>
+					<div class="modal-body" style="  text-align: center;">
+						<p style=" color: #cabeca;">با توجه به شیوع ویروس کرونا و کنسل شدن اکثر پروازها، با کلیک بر روی لینک زیر می توانید شرایط استرداد وجه تور خود را مشاهده نمایید</p>
+						<a style="background-color: #f4a720; color: #fff; padding: 8px;" class="modal-btn" href="https://www.bektashtravel.com/blog/online-mag/return-cost-of-tour">مشاهده شرایط استرداد وجوه تورهای نوروزی</a>
+		
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>
+					</div>
+				</div>
+      
+			</div>
+		</div>*@
+		@Html.Partial("FrontEnd/_FooterPartial")
+		
+		<a class="scrollup">
+			<i class="icon-arrow-up icons"></i>
+		</a>
+	</div>
+	<script src="/scripts/js/vendor/jquery.min.js"></script>
+	<script src="/scripts/js/vendor/moment.js"></script>
+	<script src="/scripts/js/vendor/bootstrap.min.js"></script>
+	<script src="/scripts/js/vendor/bootstrap-slider.min.js"></script>
+	<script src="/scripts/js/vendor/bootstrap-datetimepicker.min.js"></script>
+	<script src="/scripts/js/vendor/owl.carousel.min.js"></script>
+	<script src="/scripts/js/vendor/navigation.js"></script>
+	<script src="~/Scripts/js/vendor/modernizr.js"></script>
+	<script src="/scripts/js/vendor/jqueryvalidation.js"></script>
+	<script src="/scripts/js/vendor/jquery.viewbox.min.js"></script>
+	<script src="/scripts/js/vendor/masonry.min.js"></script>
+	<script src="/scripts/js/vendor/imagesloaded.js"></script>
+	<script src="/scripts/js/vendor/jquery.waypoints.min.js"></script>
+	<script src="/scripts/js/vendor/jquery.sticky-kit.min.js"></script>
+	<script src="/scripts/js/main.js"></script>
+@*<script src="~/Scripts/CustomFunction.min.js"></script>*@
+@*<script type="text/javascript">
+	$(window).on('load', function () {
+		$('#myModal').modal('show');
+	});
+</script>*@
+	<script src="~/Scripts/CustomFunction.js"></script>
+	<script src="~/Scripts/custom-shop.js"></script>
+	@RenderSection("scripts", required: false)
+	
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+﻿@model ViewModels.TourCategoryListViewModel
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/FrontEnd/_FronEndLayout.cshtml";
+}
+<div class="page-head white-content">
+    <div class="height50vh parallax-container" style="background-image: url(@Model.Parent.CoverImage);">
+        <div class="page-head-wrap">
+            <div class="display-r">
+                <div class="display-a">
+                    <div class="container">
+                        <div class="row justify-content-center animate" data-animation="fadeInUp" data-timeout="500">
+                            <div class="col-md-12">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/">صفحه اصلی</a></li>
+                                        <li class="breadcrumb-item"><a href="#">لیست @Model.Parent.Title </a></li>
+                                    </ol>
+                                </nav>
+                                <h1 class="big-title mt-60">@Model.Parent.Title</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content mt-60 mb-40 container-fluid">
+    <div class="row">
+        @foreach (var tour in Model.TourCategories)
+        {
+            <div class="col-md-6 col-lg-3">
+                <div class="tour-item">
+                    <a href="/tour/list/@tour.Id">
+                        <div class="img-wrap">
+                            <img src="@tour.ImageUrl" alt="" />
+
+                            @*<p class="price">@tour.Price</p>*@
+                        </div>
+                    </a>
+                    <div class="caption">
+                        <a href="/tour/list/@tour.Id"><p class="title">@tour.Title</p></a>
+                        @*<p class="date"><span class="ti-calendar"></span>@string.Format("{0:dd MMM}", tour.GoneDate)</p>
+                        <p class="time"><span class="ti-time"></span>@tour.Duration</p>*@
+                    </div>
+                </div>
+            </div>
+        }
+
+        @*<div class="col-md-12">
+                <div class="pagination">
+                    <ul>
+                        <li><a href="#"><i class="icon-arrow-left icons"></i></a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a class="active" href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#"><i class="icon-arrow-right icons"></i></a></li>
+                    </ul>
+                </div>
+            </div>*@
+    </div>
+</div>

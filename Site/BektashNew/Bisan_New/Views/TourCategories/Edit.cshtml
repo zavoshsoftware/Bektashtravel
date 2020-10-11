@@ -1,0 +1,234 @@
+﻿@model Models.TourCategory
+
+@{
+		ViewBag.Title = "ویرایش ";
+		Layout = "~/Views/Shared/BackEndLayout/_BackEndLayout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Edit", "TourCategories", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+		@Html.AntiForgeryToken()
+		@Html.HiddenFor(model => model.ParentId)
+		@Html.HiddenFor(model => model.SubmitDate)
+		@Html.HiddenFor(model => model.ImageUrl)
+		@Html.HiddenFor(model => model.CoverImage)
+
+		<div class="form-horizontal">
+			<hr />
+			@Html.ValidationSummary(true)
+			@Html.HiddenFor(model => model.Id)
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.Title)
+					@Html.ValidationMessageFor(model => model.Title)
+				</div>
+			</div>
+
+			@if (ViewBag.parent == null)
+			{
+					<div class="form-group">
+						@Html.LabelFor(model => model.TypeId, new { @class = "control-label col-md-2" })
+						<div class="col-md-10">
+							@Html.DropDownList("TypeId", String.Empty)
+							@Html.ValidationMessageFor(model => model.TypeId)
+						</div>
+					</div>
+			}
+			<div class="form-group">
+				@Html.LabelFor(model => model.UrlParam, new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.UrlParam)
+					@Html.ValidationMessageFor(model => model.UrlParam)
+				</div>
+			</div>
+			<div class="form-group">
+				@Html.LabelFor(model => model.ImageUrl, new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.Kendo().Upload().Name("fileUpload").Multiple(false)
+					@Html.ValidationMessageFor(model => model.ImageUrl)
+				</div>
+			</div><div class="form-group">
+				@Html.LabelFor(model => model.CoverImage, new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.Kendo().Upload().Name("coverUpload").Multiple(false)
+					@Html.ValidationMessageFor(model => model.CoverImage)
+				</div>
+			</div>
+			<div class="form-group">
+				@Html.LabelFor(model => model.Summery, new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.Summery)
+
+					@Html.ValidationMessageFor(model => model.Summery)
+				</div>
+			</div>
+			<div class="form-group">
+				@Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.Description)
+					@Html.ValidationMessageFor(model => model.Description)
+				</div>
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.Priority, new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.Priority)
+					@Html.ValidationMessageFor(model => model.Priority)
+				</div>
+			</div>
+
+
+			@if (User.Identity.IsAuthenticated)
+			{
+				var identity = (System.Security.Claims.ClaimsIdentity)User.Identity;
+				string role = identity.FindFirst(System.Security.Claims.ClaimTypes.Role).Value;
+				if (role == "superadmin")
+				{
+							<div class="form-group">
+								@Html.LabelFor(model => model.PageTitle, new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.PageTitle)
+
+									@Html.ValidationMessageFor(model => model.PageTitle)
+								</div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.PageDescription, new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.PageDescription)
+
+									@Html.ValidationMessageFor(model => model.PageDescription)
+								</div>
+							</div>
+				}
+				else
+				{
+					<div class="form-group">
+						@Html.HiddenFor(model => model.PageDescription)
+						@Html.HiddenFor(model => model.PageTitle)
+					</div>
+				}
+			}
+			
+			<div class="form-group">
+				@Html.LabelFor(model => model.IsInHome, new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.IsInHome)
+					@Html.ValidationMessageFor(model => model.IsInHome)
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.ShowAdditionalInfo, new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.ShowAdditionalInfo)
+
+					@Html.ValidationMessageFor(model => model.ShowAdditionalInfo)
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.BestSeason, new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.BestSeason)
+
+					@Html.ValidationMessageFor(model => model.BestSeason)
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.FlightDuration, new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.FlightDuration)
+
+					@Html.ValidationMessageFor(model => model.FlightDuration)
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.Money, new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.Money)
+
+					@Html.ValidationMessageFor(model => model.Money)
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.Language, new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.Language)
+
+					@Html.ValidationMessageFor(model => model.Language)
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.PhonePrefix, new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.PhonePrefix)
+
+					@Html.ValidationMessageFor(model => model.PhonePrefix)
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.TimeDiffrence, new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.TimeDiffrence)
+
+					@Html.ValidationMessageFor(model => model.TimeDiffrence)
+				</div>
+			</div>
+			
+			<div class="form-group">
+				@Html.LabelFor(model => model.Country, new {@class = "control-label col-md-2"})
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.Country)
+
+					@Html.ValidationMessageFor(model => model.Country)
+				</div>
+			</div>
+			
+				
+		<div class="form-group">
+			@Html.LabelFor(model => model.ShowTourCount, new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.ShowTourCount)
+
+				@Html.ValidationMessageFor(model => model.ShowTourCount)
+			</div>
+		</div>
+
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.TourCount, new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.TourCount)
+
+				@Html.ValidationMessageFor(model => model.TourCount)
+			</div>
+		</div>
+
+			<div class="form-group" id="buttons">
+				<div class="col-md-offset-2 col-md-10">
+					<input type="submit" value="ثبت" class="btn btn-primary" />
+					@Html.ActionLink("بازگشت به فهرست", "Index", new { id = ViewBag.parent })
+				</div>
+			</div>
+		</div>
+}
+

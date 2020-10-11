@@ -1,0 +1,76 @@
+﻿@model Models.Reservation
+
+@{
+    ViewBag.Title = "ویرایش ";
+    Layout = "~/Views/Shared/BackEndLayout/_BackEndLayout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Edit", "Reservations",FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">        
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fullname, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                                  @Html.EditorFor(model => model.Fullname)
+                @Html.ValidationMessageFor(model => model.Fullname)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                                  @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mobile, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                                  @Html.EditorFor(model => model.Mobile)
+                @Html.ValidationMessageFor(model => model.Mobile)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Number, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                                  @Html.EditorFor(model => model.Number)
+                @Html.ValidationMessageFor(model => model.Number)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tour.Title, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("TourId", String.Empty)
+                @Html.ValidationMessageFor(model => model.TourId)
+            </div>
+        </div>
+
+	@Html.HiddenFor(model => model.SubmitDate)
+       @* <div class="form-group">
+        @Html.LabelFor(model => model.LastModificationDate, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+                              @Html.EditorFor(model => model.LastModificationDate)
+            @Html.ValidationMessageFor(model => model.LastModificationDate)
+        </div>
+    </div>*@
+
+        <div class="form-group" id="buttons">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ثبت" class="btn btn-primary" />
+				@Html.ActionLink("بازگشت به فهرست", "Index")
+            </div>
+        </div>
+    </div>
+}
+
