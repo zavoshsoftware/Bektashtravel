@@ -553,6 +553,7 @@
     <Content Include="fonts\webfonts\fa-solid-900.svg" />
     <Content Include="Global.asax" />
     <Content Include="HtmlPage1.html" />
+    <Content Include="Images\header-innerpage.jpg" />
     <Content Include="Images\Antalya.jpg" />
     <Content Include="Images\avatar.png" />
     <Content Include="Images\Banner_Istanbul.jpg" />
@@ -1015,6 +1016,8 @@
     <Content Include="Views\Products\_PartialForm.cshtml" />
     <Content Include="Views\Products\DetailsLottery.cshtml" />
     <Content Include="Views\Products\_PartialFormLottery.cshtml" />
+    <Content Include="Views\Home\Sit.cshtml" />
+    <Content Include="Views\Home\CanadaEdu.cshtml" />
     <None Include="Web References\ir.shaparak.sep\referencepayment.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1501,6 +1504,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\SitViewModel.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ProductDetailViewModel.cs" />

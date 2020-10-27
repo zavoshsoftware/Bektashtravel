@@ -1,0 +1,73 @@
+﻿@model ViewModels.SitViewModel
+@{
+		ViewBag.Title = "خرید قسطی تور | بکتاش سیر گشت";
+	ViewBag.Description = "بکتاش سیر گشت ارائه دهنده تورهای متنوع آسیایی و اروپایی و تور کانادا. جهت اخذ ویزا کارشناسان می توانند شما را راهنمایی نمایند و به صورت تضمینی ویزای خود را اخذ کنید.";
+
+
+				Layout = "~/Views/Shared/FrontEnd/_FronEndLayout.cshtml";
+		ViewBag.Canonical = "https://www.bektashtravel.com/sit";
+}
+
+@section headSection{
+	<link href="~/Content/css/style-counter.css" rel="stylesheet" />
+}
+<div class="page-head white-content">
+	<div class="height50vh parallax-container newstyle" style="background-image: url(/Images/header-innerpage.jpg);">
+		<div class="page-head-wrap">
+			<div class="display-r">
+				<div class="display-a">
+					<div class="container">
+						<div class="row justify-content-center animate" data-animation="fadeInUp" data-timeout="500">
+							<div class="col-md-12">
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item"><a href="/">صفحه اصلی</a></li>
+										<li class="breadcrumb-item"><a href="/sit">خرید قسطی تور </a></li>
+									</ol>
+								</nav>
+								<h1 class="big-title mt-60">خرید قسطی تور </h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="content mt-60 mb-40">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-lg-12">
+				<div class="blockquote-1">
+					<p class="about-text">
+						@Html.Raw(Model.About.Body)
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+ 
+<div class="seprate40"></div>
+
+
+
+@section scripts{
+	<script src="~/Scripts/jQuerySimpleCounter.js"></script>
+
+	<script type="text/javascript">
+
+		$('#count-test-1').jQuerySimpleCounter({
+			end: 8067
+		});
+		$('#count-test-2').jQuerySimpleCounter({
+			end: 2330
+		});
+		$('#count-test-3').jQuerySimpleCounter({
+			end: 1652
+		});
+		$('#count-test-4').jQuerySimpleCounter({
+			end: 17
+		});
+	</script>
+}

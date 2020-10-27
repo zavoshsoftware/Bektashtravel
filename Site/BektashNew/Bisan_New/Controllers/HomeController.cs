@@ -135,7 +135,7 @@ namespace Bisan.Controllers
 
                 return Json("false", JsonRequestBehavior.AllowGet);
         }
-       
+
         //public void ConvertPricesToInt()
         //{
         //    Guid tourId = new Guid("59459f27-6d1e-447f-ba75-8b2e1fbb11bc");
@@ -176,5 +176,37 @@ namespace Bisan.Controllers
         //    }
 
         //}
+
+
+
+        [Route("sit")]
+        public ActionResult Sit()
+        {
+        
+            Guid sitid = new Guid("8fedfbef-9e9a-45f0-b7dc-129c19bbdaad");
+        
+            SitViewModel aboutViewModel = new SitViewModel();
+
+            aboutViewModel.Menu = menu.ReturnMenuTours();
+            aboutViewModel.MenuBlogGroups = menu.ReturnBlogGroups();
+            aboutViewModel.About = db.TextTypeItems.Where(current => current.Id == sitid).FirstOrDefault();
+            aboutViewModel.Footer = menu.ReturnFooter();
+            return View(aboutViewModel);
+        }
+
+        [Route("CanadaEdu")]
+        public ActionResult CanadaEdu()
+        {
+        
+            Guid sitid = new Guid("f5437565-3cd7-41c1-bdee-a12e2252c674");
+        
+            SitViewModel aboutViewModel = new SitViewModel();
+
+            aboutViewModel.Menu = menu.ReturnMenuTours();
+            aboutViewModel.MenuBlogGroups = menu.ReturnBlogGroups();
+            aboutViewModel.About = db.TextTypeItems.Where(current => current.Id == sitid).FirstOrDefault();
+            aboutViewModel.Footer = menu.ReturnFooter();
+            return View(aboutViewModel);
+        }
     }
 }
